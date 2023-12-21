@@ -15,23 +15,23 @@
 // repeat 4 times
 // declare winner and reset
 
-// variables
-let getComputerChoice = (Math.floor(Math.random() * 3)+1);
-let playerSelection = prompt("Rock, Paper, or Scissors?");
-console.log(playerSelection);
 let computerScore = (0);
 let playerScore = (0);
-
+let playerSelection = prompt("Rock, Paper, or Scissors?");
+function getComputerChoice() {
+    return Math.floor(Math.random() * 3);
+}
+let computerSelection = getComputerChoice();
 // switch statements convert to capatilized string answers
-switch (getComputerChoice) {
+switch (computerSelection) {
+    case 0:
+        computerSelection = 'Rock';
+        break;
     case 1:
-        getComputerChoice = 'Rock';
+        computerSelection = 'Paper';
         break;
     case 2:
-        getComputerChoice = 'Paper';
-        break;
-    case 3:
-        getComputerChoice = 'Scissors';
+        computerSelection = 'Scissors';
         break;
 }
 
@@ -46,3 +46,30 @@ switch (playerSelection) {
         playerSelection = 'Scissors';
     break;
 }
+
+function playRound (playerSelection, computerSelection) {
+
+//winning choices
+    if (playerSelection === 'Rock' && computerSelection === 'Scissors' 
+        || playerSelection==='Scissors' && computerSelection==='Paper'
+        || playerSelection==='Paper' && computerSelection==='Rock') {
+        playerScore =+ 1;
+        return (`Player chose ${playerSelection} and computer chose ${computerSelection}. Player Wins! Score is player: ${playerScore} and computer: ${computerScore}`);
+    }
+
+//losing choices
+    if (playerSelection==='Rock' && computerSelection==='Paper'
+        || playerSelection==='Paper' && computerSelection==='Scissors'
+        || playerSelection==='Scissors' && computerSelection==='Rock') {
+        computerScore =+1;
+        return (`Player chose ${playerSelection} and computer chose ${computerSelection}. Player Loses! Score is player: ${playerScore} and computer: ${computerScore}`);
+    }
+
+//tie
+    if (playerSelection===computerSelection) {
+        return (`Both Player and computer chose ${playerSelection}. There is no change in score.`)
+    }
+}
+console.log(typeof(computerSelection));
+console.log(typeof(playerSelection));
+console.log(playRound (playerSelection, computerSelection));
