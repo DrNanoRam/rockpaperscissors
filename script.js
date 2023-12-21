@@ -70,6 +70,8 @@ function playRound (playerSelection, computerSelection) {
         return (`Both Player and computer chose ${playerSelection}. There is no change in score.`)
     }
 }
-console.log(typeof(computerSelection));
-console.log(typeof(playerSelection));
-console.log(playRound (playerSelection, computerSelection));
+
+function game () {
+    return playRound(playerSelection, computerSelection);
+}
+console.log(game(playerSelection,computerSelection));
